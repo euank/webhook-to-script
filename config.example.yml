@@ -1,0 +1,18 @@
+# Secret is optional; only set it if you set it on github
+# I do recommend setting it
+secret: github_secret
+
+
+# A list of repositories as keys, with each having
+# values of track and run. All of this is required.
+repositories:
+  # Compact format; recommended
+  - my-repo:
+      track: master
+      run: ./push_happened.sh
+
+  # Explicit format
+  - 'https://github.com/user/repo':
+      track: refs/heads/master
+      run: ./different_push_happened
+
