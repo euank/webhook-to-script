@@ -1,18 +1,18 @@
-# Secret is optional; only set it if you set it on github
-# I do recommend setting it
-secret: github_secret
+# Each key is a path that the webhook responds to, including leading /
+/most_basic_webhook/example:
+  run: ./webhook_hit.sh
 
+/mywebhookpath:
+  run: ./github-push.sh
+  github:
+    secret: secret
+    repo: my-repo-name
+    track: master
 
-# A list of repositories as keys, with each having
-# values of track and run. All of this is required.
-repositories:
-  # Compact format; recommended
-  - my-repo:
-      track: master
-      run: ./push_happened.sh
-
-  # Explicit format
-  - 'https://github.com/user/repo':
-      track: refs/heads/master
-      run: ./different_push_happened
-
+# Recommended you use the compact format above.
+/my_more_explicit_github_webhook:
+  run: ./script.sh
+  github:
+    secret: secret #optional
+    track: refs/heads/master
+    repo: 'https://github.com/user/repo'
